@@ -14,10 +14,10 @@
    font-size: 20px;
 }
 #forecast{
-   
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    
+    display: flex;
+}
+title{
+    font-weight: bold;
 }
 p {
     color: white;
