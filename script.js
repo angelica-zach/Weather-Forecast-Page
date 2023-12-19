@@ -91,9 +91,11 @@ $("#search-button").on("click", function (event) {
 };
 // saving history
 function saveValue(cityName) {
-    var searchHistory = getSearchHistory() || [];
-    // Add the new search term to the history
-    searchHistory.push(cityName);
+    var searchHistory = getSearchHistory();
+    // Add the new search term to the history if it is not alreadly present
+    if (!searchHistory.includes(cityName)) {
+        searchHistory.push(cityName);
+    }
     // Keep only the five most recent searches
     if (searchHistory.length > 5) {
         searchHistory = searchHistory.slice(-5);
@@ -124,7 +126,7 @@ function saveValue(cityName) {
         var button = $("<button>");
         button.text(city);
         button.on('click', () => searchCity(city));
-        $("#history").append(button);
+        $("#history").prepend(button);
       });
   };
 // repeat every few minutes

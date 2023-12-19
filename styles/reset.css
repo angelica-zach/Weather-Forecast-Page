@@ -23,3 +23,11 @@ p {
     color: white;
     font-size: 18px;
 }
+#history {
+    display: flex;
+    flex-direction: column; /* Set flex container to a column layout */
+}
+
+#history>button {
+    margin-bottom: 5px; /* Add some spacing between buttons */
+}
