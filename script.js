@@ -29,7 +29,7 @@ $("#search-button").on("click", function (event) {
     var dateToday=data.list[0].dt_txt.split(" ")[0];
     var dayUnix=data.list[0].dt;
    var day= dayjs.unix(dayUnix).format("DD/MM/YYYY");
-    title.text(city +"( " +day +" )");
+    title.text(city +"[" +day +" ]");
     // getting conditions
     var temp=$("<p>");
     var wind=$("<p>");
@@ -40,12 +40,17 @@ $("#search-button").on("click", function (event) {
     temp.text("Temperature :"+ tempReal.toFixed(2) + "°C");
     wind.text("Wind :"+ windReal + "KPH");
     humid.text("Humidity :"+ humidReal + "%");
+    // adding images
+    var img=$("<img>");
+    var iconcode = data.list[0].weather[0].icon;
+    var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+    $(img).attr('src', iconurl);
 
     $(title).append(wind);
     $(title).append(humid);
     $(title).append(temp);
     $("#today").append(title);
-
+    $(title).prepend(img);
 
     //future forecast
      for (i=0;i<amount;i++){
@@ -55,7 +60,8 @@ $("#search-button").on("click", function (event) {
         if ((timePart=="12:00:00")&&(datePart!=dateToday)) {
             var dayBlock=$("<div>");
             var title = $("<h2>");
-            title.text("["+datePart+"]");
+           
+            title.text("["+dayjs(datePart).format("DD/MM/YYYY")+"]");
             var temp=$("<p>");
             var wind=$("<p>");
             var humid=$("<p>");
@@ -65,9 +71,15 @@ $("#search-button").on("click", function (event) {
           temp.text("Temperature :"+ tempReal.toFixed(2) + "°C");
           wind.text("Wind :"+ windReal + "KPH");
          humid.text("Humidity :"+ humidReal + "%");
+         var img=$("<img>");
+         var iconcode = data.list[0].weather[0].icon;
+         var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+         $(img).attr('src', iconurl);
+     
          $(title).append(wind);
          $(title).append(humid);
          $(title).append(temp);
+         $(title).prepend(img);
          $(dayBlock).append(title);
          $("#forecast").append(dayBlock);
         };
