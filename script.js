@@ -26,6 +26,7 @@ $("#search-button").on("click", function (event) {
         
     // todays forecast
     var title = $("<h2>");
+    var dateToday=data.list[0].dt_txt.split(" ")[0];
     var dayUnix=data.list[0].dt;
    var day= dayjs.unix(dayUnix).format("DD/MM/YYYY");
     title.text(city +"( " +day +" )");
@@ -47,23 +48,31 @@ $("#search-button").on("click", function (event) {
 
 
     //future forecast
-    // for (i=0;i<amount;i++){
-
-    // var temp = ("<p>");
-    // temp.text(temperature+"C")
-    //     forecast
-    //     for (i=0;i<amount;i++){
-    //         day=;
-    //         time=;
-    //         temperature=;
-    //         wind=;
-    //         humidity=;
-    //     }
-    //     icon=;
-    //     day.append(icon);
-    //     [today]
+     for (i=0;i<amount;i++){
+        var timePart = data.list[i].dt_txt.split(" ")[1];
+        var datePart=data.list[i].dt_txt.split(" ")[0];
     
-    //   };
+        if ((timePart=="12:00:00")&&(datePart!=dateToday)) {
+            var dayBlock=$("<div>");
+            var title = $("<h2>");
+            title.text("["+datePart+"]");
+            var temp=$("<p>");
+            var wind=$("<p>");
+            var humid=$("<p>");
+            var humidReal=(data.list[i].main.humidity);
+            var windReal=(data.list[i].wind.speed)
+           var tempReal=(data.list[i].main.temp)-273.15;
+          temp.text("Temperature :"+ tempReal.toFixed(2) + "°C");
+          wind.text("Wind :"+ windReal + "KPH");
+         humid.text("Humidity :"+ humidReal + "%");
+         $(title).append(wind);
+         $(title).append(humid);
+         $(title).append(temp);
+         $(dayBlock).append(title);
+         $("#forecast").append(dayBlock);
+        };
+    
+     };
   });
 });
   
