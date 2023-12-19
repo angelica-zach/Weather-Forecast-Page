@@ -60,7 +60,7 @@ $("#search-button").on("click", function (event) {
         if ((timePart=="12:00:00")&&(datePart!=dateToday)) {
             var dayBlock=$("<div>");
             var title = $("<h2>");
-           
+        //    formatting date to match
             title.text("["+dayjs(datePart).format("DD/MM/YYYY")+"]");
             var temp=$("<p>");
             var wind=$("<p>");

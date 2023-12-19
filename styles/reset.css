@@ -1,0 +1,25 @@
+*{
+    font-family:'Times New Roman', Times, serif;
+}
+#today{
+    background-color: grey;
+    padding:2px
+}
+#forecast>div{
+    background-color: darkcyan;
+    margin:2px;
+    padding:2px
+}
+#forecast>div>h2{
+   font-size: 20px;
+}
+#forecast{
+   
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    
+}
+p {
+    color: white;
+    font-size: 18px;
+}
