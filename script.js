@@ -1,5 +1,4 @@
 
-
 // .on("click") function associated with the Search Button
 $("#search-button").on("click", function (event) {
    // Prevents the page from reloading on form submit.
@@ -91,9 +90,10 @@ $("#search-button").on("click", function (event) {
 };
 // saving history
 function saveValue(cityName) {
-    var searchHistory = getSearchHistory();
-    // Add the new search term to the history if it is not alreadly present
-    if (!searchHistory.includes(cityName)) {
+    var searchHistory = getSearchHistory() || [];
+
+    // Check if cityName is not already in the search history
+    if ($.inArray(cityName, searchHistory) === -1) {
         searchHistory.push(cityName);
     }
     // Keep only the five most recent searches
@@ -122,7 +122,7 @@ function saveValue(cityName) {
     $("#history").empty();
     // creating buttons
     var searches=getSearchHistory();
-    searches.forEach((city, index) => {
+    searches.forEach((city) => {
         var button = $("<button>");
         button.text(city);
         button.on('click', () => searchCity(city));

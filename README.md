@@ -1,15 +1,25 @@
 # Weather-Forecast-Page
+
 ## Description
+
 Here, i was tasked with creating a weather forecast page to consolidate my knowledge of APIs and storage . I had to use local sotorage alngside jquery to create history of searches which functioned as buttons to start a new search. I used CSS to style this . Any search be it in the bar or via button ,will return a 5 day weather forecast which uses day js to format the dates and the actual data is from Open Weather. This helped me learn how to read API files as i had to use images from the site which i was unfamiliar with. I also added a function so that only searcges that didnt match previous seraches would save in history (so multiples of the same city were not saved)
 [weather app]https://angelica-zach.github.io/Weather-Forecast-Page/
+
 ### Functions
-![answer](starter/images/answer.png)
+
+![answer](images/answer.png)
+
 ## APIs Used
+
 -Day js()
--Open Weather 
+-Open Weather
+
 ## Installation
-Press the green  code button in the top right of the screen and copy your desired method (eg. for shh keys copy and use git clone in your terminal)
+
+Press the green code button in the top right of the screen and copy your desired method (eg. for shh keys copy and use git clone in your terminal)
+
 ## License
+
 MIT License
 
 Copyright (c) [2023] [angelica zachowski]
